@@ -15,6 +15,13 @@ apt update
 apt upgrade -y
 apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms -y
 
+## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
+git clone https://github.com/aircrack-ng/rtl8812au.git
+cd rtl8812au
+sudo make dkms_install
+cd ..
+rm -rf rtl8812au
+
 ## Update bettercap
 bettercap -eval "caplets.update; ui.update; quit"
 
@@ -57,12 +64,12 @@ else
 fi
 """ > /etc/systemd/system/bettercap.service
 
-## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
-git clone https://github.com/aircrack-ng/rtl8812au.git
-cd rtl8812au
-sudo make dkms_install
-cd ..
-rm -rf rtl8812au
+## Install and setup pwngrid
+wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.3/pwngrid_linux_aarch64_v1.10.3.zip"
+unzip pwngrid_linux_aarch64_v1.10.3.zip
+sudo mv pwngrid /usr/bin/
+sudo pwngrid -generate -keys /etc/pwnagotchi
+
 
 ## Make python folder (Pretty sure this is not required but oh well)
 sudo mkdir /usr/local/share/python3.7
@@ -83,4 +90,25 @@ rm -rf Python3.7.17
 
 ## Download pwnagotchi
 git clone https://github.com/Dam-0/pwnagotchi
+cd pwnagotchi
+sudo pip3.7 install --upgrade wheel setuptools
+sudo python3.7 -m pip install tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
+sudo pip3.7 install -r requirements.txt
+sudo pip3.7 install .
 
+## Add permissions to files
+sudo chmod 755 /usr/bin/bettercap
+sudo chown root:root /usr/bin/bettercap
+sudo chmod 755 /usr/bin/bettercap-launcher
+sudo chmod 755 /usr/bin/pwngrid
+sudo chown root:root /usr/bin/pwngrid
+sudo chmod 755 /usr/local/bin/pwnagotchi
+sudo chown root:root /usr/local/bin/pwnagotchi
+sudo chmod 711 /usr/bin/pwnagotchi-launcher
+
+##
+## ADD PWNAGOTCHI CONFIG FILES
+
+
+## Enable services
+sudo systemctl enable bettercap pwngrid-peer pwnagotchi
