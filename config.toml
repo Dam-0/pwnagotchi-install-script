@@ -82,7 +82,7 @@ personality.bored_num_epochs = 15
 personality.sad_num_epochs = 25
 personality.bond_encounters_factor = 20000
 
-ui.fps = 0
+ui.fps = 1
 ui.font.name = "DejaVuSansMono" # for japanese: fonts-japanese-gothic
 ui.font.size_offset = 0 # will be added to the font size
 
@@ -126,8 +126,8 @@ main.plugins.bt-tether.devices.android-phone.priority = 1
 
 ui.web.enabled = true
 ui.web.address = "0.0.0.0"
-ui.web.username = "damo"
-ui.web.password = "damo"
+ui.web.username = "pwnagotchi"
+ui.web.password = "pwnagotchi"
 ui.web.origin = ""
 ui.web.port = 8080
 ui.web.on_frame = ""
@@ -135,8 +135,8 @@ ui.web.on_frame = ""
 bettercap.scheme = "http"
 bettercap.hostname = "localhost"
 bettercap.port = 8081
-bettercap.username = "damo"
-bettercap.password = "damo"
+bettercap.username = "pwnagotchi"
+bettercap.password = "pwnagotchi"
 bettercap.handshakes = "/root/handshakes"
 bettercap.silence = [
   "ble.device.new",
