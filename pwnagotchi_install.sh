@@ -13,7 +13,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ## Install required packages and dependancies
 apt update
 apt upgrade -y
-apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms aircrack-ng hcxtools -y
+apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms aircrack-ng hcxtools neovim vim -y
 
 ## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
 git clone https://github.com/aircrack-ng/rtl8812au.git
@@ -21,7 +21,7 @@ cd rtl8812au
 make dkms_install
 cd ..
 rm -rf rtl8812au
-modprobe rtl8812au
+modprobe 88XXau
 
 
 ## Update bettercap
@@ -120,8 +120,8 @@ mkdir /etc/pwnagotchi/custom-plugins/
 mv hashie.py /etc/pwnagotchi/custom-plugins/hashie.py
 
 ## Alias
-echo """alias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " "''"''" -f 2-'""" >> /root/.bashrc
-echo """alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'""" >> /root/.bashrc
+echo "alias pwnlog=""'""tail -f -n300 /var/log/pwn*.log | sed --unbuffered "'"'"s/,[[:digit:]]\{3\}\]//g"'"'" | cut -d "'"'" "'"'" -f 2-""'" >> /root/.bashrc
+echo "alias pwnver=""'""python3 -c "'"'"import pwnagotchi as p; print(p.version)"'"' >> /root/.bashrc
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
