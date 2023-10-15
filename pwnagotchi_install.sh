@@ -121,7 +121,7 @@ mv hashie.py /etc/pwnagotchi/custom-plugins/hashie.py
 
 ## Alias
 echo "alias pwnlog=""'""tail -f -n300 /var/log/pwn*.log | sed --unbuffered "'"'"s/,[[:digit:]]\{3\}\]//g"'"'" | cut -d "'"'" "'"'" -f 2-""'" >> /root/.bashrc
-echo "alias pwnver=""'""python3 -c "'"'"import pwnagotchi as p; print(p.version)"'"' >> /root/.bashrc
+echo "alias pwnver=""'""python3 -c "'"'"import pwnagotchi as p; print(p.version)""'" >> /root/.bashrc
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
