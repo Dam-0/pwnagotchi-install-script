@@ -95,7 +95,7 @@ cd pwnagotchi
 pip3.7 install --upgrade wheel setuptools
 python3.7 -m pip install ../tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
 pip3.7 install -r requirements.txt
-#pip3.7 install .
+pip3.7 install .
 cd ..
 
 
@@ -114,11 +114,12 @@ mv config.toml /etc/pwnagotchi/config.toml
 
 ## Install plugins
 wget https://github.com/evilsocket/pwnagotchi-plugins-contrib/raw/master/hashie.py
+mkdir /etc/pwnagotchi/custom-plugins/
 mv hashie.py /etc/pwnagotchi/custom-plugins/hashie.py
 
 ## Alias
-echo alias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-' >> /root/.bashrc
-echo alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"' >> /root/.bashrc
+echo """alias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " "''"''" -f 2-'""" >> /root/.bashrc
+echo """alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'""" >> /root/.bashrc
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
