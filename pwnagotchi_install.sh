@@ -21,6 +21,8 @@ cd rtl8812au
 make dkms_install
 cd ..
 rm -rf rtl8812au
+modprobe rtl8812au
+
 
 ## Update bettercap
 bettercap -eval "caplets.update; ui.update; quit"
