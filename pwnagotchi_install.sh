@@ -81,7 +81,7 @@ tar -xf Python-3.7.17.tar.xz
 cd Python-3.7.17
 
 ## Build and Install Python 3.7.17
-./configure --enable-optimizations --enable-shared --with-ensurepip=install
+./configure --enable-shared --with-ensurepip=install
 make -j 4
 make altinstall
 ldconfig /usr/local/share/python3.7
@@ -95,7 +95,7 @@ cd pwnagotchi
 pip3.7 install --upgrade wheel setuptools
 python3.7 -m pip install tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
 pip3.7 install -r requirements.txt
-pip3.7 install .
+#pip3.7 install .
 
 ## Add permissions to files
 chmod 755 /usr/bin/bettercap
@@ -107,7 +107,6 @@ chmod 755 /usr/local/bin/pwnagotchi
 chown root:root /usr/local/bin/pwnagotchi
 chmod 711 /usr/bin/pwnagotchi-launcher
 
-##
 ## Overwrite config.toml file
 mv config.toml /etc/pwnagotchi/config.toml
 
@@ -115,7 +114,9 @@ mv config.toml /etc/pwnagotchi/config.toml
 wget https://github.com/evilsocket/pwnagotchi-plugins-contrib/raw/master/hashie.py
 mv hashie.py /etc/pwnagotchi/custom-plugins/hashie.py
 
-
+## Alias
+echo alias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-' >> /root/.bashrc
+echo alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"' >> /root/.bashrc
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
