@@ -93,9 +93,11 @@ rm -rf Python-3.7.1*
 git clone https://github.com/Dam-0/pwnagotchi
 cd pwnagotchi
 pip3.7 install --upgrade wheel setuptools
-python3.7 -m pip install tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
+python3.7 -m pip install ../tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
 pip3.7 install -r requirements.txt
 #pip3.7 install .
+cd ..
+
 
 ## Add permissions to files
 chmod 755 /usr/bin/bettercap
