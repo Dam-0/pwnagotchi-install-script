@@ -112,6 +112,18 @@ ui.faces.upload = "(1__0)"
 ui.faces.upload1 = "(1__1)"
 ui.faces.upload2 = "(0__1)"
 
+
+main.plugins.bt-tether.devices.android-phone.enabled = true
+main.plugins.bt-tether.devices.android-phone.search_order = 1
+main.plugins.bt-tether.devices.android-phone.mac = "3C:01:EF:DD:DE:EA"
+main.plugins.bt-tether.devices.android-phone.ip = "192.168.44.44"
+main.plugins.bt-tether.devices.android-phone.netmask = 24
+main.plugins.bt-tether.devices.android-phone.interval = 1
+main.plugins.bt-tether.devices.android-phone.scantime = 10
+main.plugins.bt-tether.devices.android-phone.max_tries = 10
+main.plugins.bt-tether.devices.android-phone.share_internet = false
+main.plugins.bt-tether.devices.android-phone.priority = 1
+
 ui.web.enabled = true
 ui.web.address = "0.0.0.0"
 ui.web.username = "damo"
