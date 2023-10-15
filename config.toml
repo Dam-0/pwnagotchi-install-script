@@ -9,9 +9,9 @@ main.plugins.grid.exclude = [
   "example",
 ]
 
-main.custom_plugin_repos = [
-  "https://github.com/evilsocket/pwnagotchi-plugins-contrib/archive/master.zip"
-]
+main.custom_plugins = "/etc/pwnagotchi/custom-plugins/"
+main.custom_plugin_repos = [ "https://github.com/evilsocket/pwnagotchi-plugins-contrib/archive/master.zip",]
+
 
 main.iface = "wlan1"
 main.mon_start_cmd = "/usr/bin/monstart"
@@ -22,6 +22,10 @@ main.whitelist = [
   "example",
   "example",
 ]
+
+main.plugins.hashie.enabled = true
+main.plugins.aircrackonly.enabled = true
+main.plugins.aircrackonly.face = "(>.<)"
 
 main.plugins.auto-update.enabled = true
 main.plugins.auto-update.install = true
