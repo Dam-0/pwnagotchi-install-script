@@ -13,7 +13,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ## Install required packages and dependancies
 apt update
 apt upgrade -y
-apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms aircrack-ng hcxtools neovim vim -y
+apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms aircrack-ng hcxtools neovim vim hashcat bully macchanger wifite -y
 
 ## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
 git clone https://github.com/aircrack-ng/rtl8812au.git
