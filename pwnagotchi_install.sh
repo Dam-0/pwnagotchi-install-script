@@ -111,9 +111,6 @@ chmod 755 /usr/local/bin/pwnagotchi
 chown root:root /usr/local/bin/pwnagotchi
 chmod 711 /usr/bin/pwnagotchi-launcher
 
-## Overwrite config.toml file
-mv config.toml /etc/pwnagotchi/config.toml
-
 ## Install plugins
 wget https://github.com/evilsocket/pwnagotchi-plugins-contrib/raw/master/hashie.py
 mkdir /etc/pwnagotchi/custom-plugins/
@@ -125,6 +122,12 @@ echo "alias pwnver=""'""python3 -c "'"'"import pwnagotchi as p; print(p.version)
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
+systemctl start bettercap pwngrid-peer pwnagotchi
+
+## Overwrite config.toml file
+mv config.toml /etc/pwnagotchi/config.toml
+
+systemctl restart bettercap pwngrid-peer pwnagotchi
 
 cd ..
 rm -rf pwnagotchi-install-script
