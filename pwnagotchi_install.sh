@@ -123,3 +123,8 @@ echo """alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'""" 
 
 ## Enable services
 systemctl enable bettercap pwngrid-peer pwnagotchi
+
+cd ..
+rm -rf pwnagotchi-install-script
+
+exit 0
