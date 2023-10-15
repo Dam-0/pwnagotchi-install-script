@@ -31,6 +31,9 @@ main.plugins.auto-update.enabled = true
 main.plugins.auto-update.install = true
 main.plugins.auto-update.interval = 1
 
+main.plugins.led.enabled = false
+ui.display.enabled = false
+
 main.plugins.ups_lite.enabled = false
 main.plugins.ups_lite.shutdown = 2
 
