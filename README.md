@@ -6,6 +6,8 @@ I Use 64bit lite, but should work with all of them?
 
 Headless install via SSH
 
+This is configured for an external usb WIFI adapter so change the script as required
+
 `config.toml` will have to be changed for bluetooth
 
 ```
