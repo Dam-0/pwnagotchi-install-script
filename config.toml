@@ -2,7 +2,7 @@ main.name = "pwnagotchi"
 main.lang = "en"
 
 
-main.plugins.grid.enabled = true
+main.plugins.grid.enabled = false
 main.plugins.grid.report = false
 main.plugins.grid.exclude = [
   "example",
