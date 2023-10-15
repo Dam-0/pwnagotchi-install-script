@@ -13,7 +13,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ## Install required packages and dependancies
 apt update
 apt upgrade -y
-apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms -y
+apt install bettercap python3-pip libpcap0.8 libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev gfortran git dkms aircrack-ng -y
 
 ## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
 git clone https://github.com/aircrack-ng/rtl8812au.git
@@ -69,6 +69,7 @@ wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.3/pwngrid_li
 unzip pwngrid_linux_aarch64_v1.10.3.zip
 sudo mv pwngrid /usr/bin/
 sudo pwngrid -generate -keys /etc/pwnagotchi
+rm -f pwngrid_linux_aarach64*
 
 
 ## Make python folder (Pretty sure this is not required but oh well)
@@ -86,7 +87,7 @@ sudo make altinstall
 sudo ldconfig /usr/local/share/python3.7
 sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.7 1
 cd ..
-rm -rf Python3.7.17
+rm -rf Python-3.7.1*
 
 ## Download pwnagotchi
 git clone https://github.com/Dam-0/pwnagotchi
@@ -94,7 +95,7 @@ cd pwnagotchi
 sudo pip3.7 install --upgrade wheel setuptools
 sudo python3.7 -m pip install tensorflow-1.15.0-cp37-cp37m-linux_aarch64.whl
 sudo pip3.7 install -r requirements.txt
-sudo pip3.7 install .
+#sudo pip3.7 install .
 
 ## Add permissions to files
 sudo chmod 755 /usr/bin/bettercap
