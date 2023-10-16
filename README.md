@@ -17,4 +17,5 @@ apt install git
 git clone https://github.com/Dam-0/pwnagotchi-install-script
 cd pwnagotchi-install-script
 chmod +x pwnagotchi_install.sh
-./pwnagotchi_install.sh```
+./pwnagotchi_install.sh
+```

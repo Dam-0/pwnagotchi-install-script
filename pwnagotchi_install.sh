@@ -48,7 +48,7 @@ RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
-""" > /usr/bin/bettercap-launcher
+""" > /etc/systemd/system/bettercap.service
 
 
 echo """
@@ -64,7 +64,8 @@ if [[ $(ifconfig | grep usb0 | grep RUNNING) ]] || [[ $(cat /sys/class/net/eth0/
 else
   /usr/bin/bettercap -no-colors -caplet pwnagotchi-auto -iface wlan1
 fi
-""" > /etc/systemd/system/bettercap.service
+""" > /usr/bin/bettercap-launcher
+
 
 ## Install and setup pwngrid
 wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.3/pwngrid_linux_aarch64_v1.10.3.zip"
