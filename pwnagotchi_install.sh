@@ -22,8 +22,7 @@ apt upgrade -y
 apt install libgl1-mesa-glx golang libusb-1.0-0-dev libnetfilter-queue-dev libpcap0.8-dev libpcap-dev libglib2.0-dev build-essential cmake sudo zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev git dkms aircrack-ng hcxtools neovim vim liblzma-dev -y
 
 ## libcap install (Have to use an older version)
-dpkg -i libpcap0.8-dev_1.9.1-4_arm64.deb
-rm libpcap0.8-dev_1.9.1-4_arm64.deb
+dpkg -i libpcap0.8_1.9.1-4_arm64.deb
 
 ## Install wifi driver for ALFA AWUS036ACH (rtl8812au)
 git clone https://github.com/aircrack-ng/rtl8812au.git
