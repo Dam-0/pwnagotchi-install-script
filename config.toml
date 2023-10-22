@@ -26,16 +26,12 @@ main.plugins.hashie.enabled = true
 main.plugins.aircrackonly.enabled = false
 main.plugins.aircrackonly.face = "(>.<)"
 
-main.plugins.auto-update.enabled = true
-main.plugins.auto-update.install = true
+main.plugins.auto-update.enabled = false
+main.plugins.auto-update.install = false
 main.plugins.auto-update.interval = 1
 
 main.plugins.led.enabled = false
 ui.display.enabled = false
-ui.display.type = "waveshare37inch" #"waveshare37inch"
-ui.display.color = "black"
-
-
 
 main.plugins.session-stats.enabled = true
 main.plugins.session-stats.save_directory = "/var/tmp/pwnagotchi/sessions/"
@@ -109,17 +105,7 @@ ui.faces.upload = "(1__0)"
 ui.faces.upload1 = "(1__1)"
 ui.faces.upload2 = "(0__1)"
 
-main.plugins.bt-tether.enabled = true
-main.plugins.bt-tether.devices.android-phone.enabled = true
-main.plugins.bt-tether.devices.android-phone.search_order = 1
-main.plugins.bt-tether.devices.android-phone.mac = "3C:01:EF:DD:DE:EA"
-main.plugins.bt-tether.devices.android-phone.ip = "192.168.44.44"
-main.plugins.bt-tether.devices.android-phone.netmask = 24
-main.plugins.bt-tether.devices.android-phone.interval = 1
-main.plugins.bt-tether.devices.android-phone.scantime = 10
-main.plugins.bt-tether.devices.android-phone.max_tries = 10
-main.plugins.bt-tether.devices.android-phone.share_internet = true
-main.plugins.bt-tether.devices.android-phone.priority = 1
+main.plugins.bt-tether.enabled = false
 
 ui.web.enabled = true
 ui.web.address = "0.0.0.0"
@@ -137,7 +123,7 @@ bettercap.password = "pwnagotchi"
 bettercap.handshakes = "/root/handshakes" 
 
 fs.memory.enabled = true
-fs.memory.mounts.log.enabled = false
+fs.memory.mounts.log.enabled = true
 fs.memory.mounts.log.mount = "/var/log"
 fs.memory.mounts.log.size = "50M"
 fs.memory.mounts.log.sync = 60
@@ -148,5 +134,5 @@ fs.memory.mounts.data.enabled = true
 fs.memory.mounts.data.mount = "/var/tmp/pwnagotchi"
 fs.memory.mounts.data.size = "10M"
 fs.memory.mounts.data.sync = 3600
-fs.memory.mounts.data.zram = false
+fs.memory.mounts.data.zram = true
 fs.memory.mounts.data.rsync = true

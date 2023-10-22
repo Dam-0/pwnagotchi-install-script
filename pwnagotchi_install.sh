@@ -6,15 +6,20 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-
-
 ## VARS
 WIFI_DEV="wlan1"
+
+###
+#config dtoverlay=dwc2,gether
+#cmd    modules-load=dwc2
 
 ## Update DNS
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 chattr +i /etc/resolv.conf
+
+## Case
+curl https://download.argon40.com/argon1.sh | bash
 
 ## Install required packages and dependancies
 apt update
@@ -29,9 +34,7 @@ git clone https://github.com/aircrack-ng/rtl8812au.git
 cd rtl8812au
 make dkms_install
 cd ..
-rm -rf rtl8812au
 modprobe 88XXau
-
 
 ## Manual install of bettercap
 wget https://github.com/bettercap/bettercap/archive/refs/tags/v2.32.0.zip
@@ -40,14 +43,9 @@ cd bettercap-2.32.0
 make build -j4
 mv bettercap /usr/bin/
 cd ..
-rm -rf bettercap-2.32.0
-rm -rf v2.32.0.zip
-
 
 ## Update bettercap
 bettercap -eval "caplets.update; ui.update; quit"
-
-
 
 ## Create a bettercap service and launcher
 echo """ 
@@ -70,7 +68,7 @@ WantedBy=multi-user.target
 
 
 echo """
-#!/usr/bin/env bash
+#!/usr/bin/env bash ## FIX THIS
 /usr/bin/monstart
 if [[ $(ifconfig | grep usb0 | grep RUNNING) ]] || [[ $(cat /sys/class/net/eth0/carrier) ]]; then
   # if override file exists, go into auto mode
@@ -106,9 +104,6 @@ wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.3/pwngrid_li
 unzip pwngrid_linux_aarch64_v1.10.3.zip
 mv pwngrid /usr/bin/
 pwngrid -generate -keys /etc/pwnagotchi
-rm -f pwngrid_linux_aarch64_v1.10.3.zip
-rm -f pwngrid_linux_aarch64_v1.10.3.sha256
-
 
 ## Make python folder (Pretty sure this is not required but oh well)
 mkdir /usr/local/share/python3.7
@@ -119,8 +114,7 @@ tar -xf Python-3.7.17.tar.xz
 cd Python-3.7.17
 
 ## Build and Install Python 3.7.17
-./configure --enable-shared --with-ensurepip=install
-# -enable-optimizations
+./configure --enable-shared --with-ensurepip=install -enable-optimizations
 make -j 4
 make altinstall
 ldconfig /usr/local/share/python3.7
@@ -146,18 +140,11 @@ cp config.toml /etc/pwnagotchi/config.toml
 chmod u+x /usr/bin/monstart
 chmod u+x /usr/bin/pwnagotchi-launcher
 
-sudo sed -i "s/mon0/$WIFI_DEV/g" /usr/local/share/bettercap/caplets/pwnagotchi-auto.cap
-sudo sed -i "s/mon0/$WIFI_DEV/g" /usr/local/share/bettercap/caplets/pwnagotchi-manual.cap
-sudo sed -i "s/mon0/$WIFI_DEV/g" /usr/bin/pwnlib
-
-## Change default wifi to adapter
-#   /usr/bin/pwnlib
-#   ip link set wlan1 down
-#   ip link set wlan1 name mon0
-#   iw dev mon0 set type monitor
-#   ip link set mon0 up
-#
-#   iw phy "$(iw phy | head -1 | cut -d" " -f2)" interface add mon1 type monitor
+sed -i "s/mon0/$WIFI_DEV/g" /usr/local/share/bettercap/caplets/pwnagotchi-auto.cap
+sed -i "s/mon0/$WIFI_DEV/g" /usr/local/share/bettercap/caplets/pwnagotchi-manual.cap
+sed -i "s/mon0/$WIFI_DEV/g" /etc/systemd/system/pwngrid-peer.service
+## Sets place modifed pwnlib
+mv pwnlib /usr/bin/pwnlib
 
 
 ## Add permissions to files
