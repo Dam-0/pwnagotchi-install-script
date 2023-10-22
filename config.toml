@@ -13,7 +13,6 @@ main.custom_plugins = "/etc/pwnagotchi/custom-plugins/"
 main.custom_plugin_repos = [ "https://github.com/evilsocket/pwnagotchi-plugins-contrib/archive/master.zip",]
 
 
-main.iface = "wlan1"
 main.mon_start_cmd = "/usr/bin/monstart"
 main.mon_stop_cmd = "/usr/bin/monstop"
 main.mon_max_blind_epochs = 50
@@ -24,7 +23,7 @@ main.whitelist = [
 ]
 
 main.plugins.hashie.enabled = true
-main.plugins.aircrackonly.enabled = true
+main.plugins.aircrackonly.enabled = false
 main.plugins.aircrackonly.face = "(>.<)"
 
 main.plugins.auto-update.enabled = true
@@ -33,12 +32,10 @@ main.plugins.auto-update.interval = 1
 
 main.plugins.led.enabled = false
 ui.display.enabled = false
+ui.display.type = "waveshare37inch" #"waveshare37inch"
+ui.display.color = "black"
 
-main.plugins.ups_lite.enabled = false
-main.plugins.ups_lite.shutdown = 2
 
-main.plugins.logtail.enabled = true
-main.plugins.logtail.max-lines = 10000
 
 main.plugins.session-stats.enabled = true
 main.plugins.session-stats.save_directory = "/var/tmp/pwnagotchi/sessions/"
@@ -112,7 +109,7 @@ ui.faces.upload = "(1__0)"
 ui.faces.upload1 = "(1__1)"
 ui.faces.upload2 = "(0__1)"
 
-
+main.plugins.bt-tether.enabled = true
 main.plugins.bt-tether.devices.android-phone.enabled = true
 main.plugins.bt-tether.devices.android-phone.search_order = 1
 main.plugins.bt-tether.devices.android-phone.mac = "3C:01:EF:DD:DE:EA"
@@ -137,21 +134,7 @@ bettercap.hostname = "localhost"
 bettercap.port = 8081
 bettercap.username = "pwnagotchi"
 bettercap.password = "pwnagotchi"
-bettercap.handshakes = "/root/handshakes"
-bettercap.silence = [
-  "ble.device.new",
-  "ble.device.lost",
-  "ble.device.disconnected",
-  "ble.device.connected",
-  "ble.device.service.discovered",
-  "ble.device.characteristic.discovered",
-  "wifi.client.new",
-  "wifi.client.lost",
-  "wifi.client.probe",
-  "wifi.ap.new",
-  "wifi.ap.lost",
-  "mod.started"
-]
+bettercap.handshakes = "/root/handshakes" 
 
 fs.memory.enabled = true
 fs.memory.mounts.log.enabled = false

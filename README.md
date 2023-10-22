@@ -1,5 +1,5 @@
 # pwnagotchi-install-script
-Automated pwnagotchi install for RPI 4 B (Debain 11 - Bookworm)
+Automated pwnagotchi install for raspbery pi 4 B (Debain 12 - Bookworm)
 (Might work for 5?)
 
 I Use 64bit lite, but should work with all of them?
